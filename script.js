@@ -11,11 +11,10 @@ class AdvancedCGPACalculator {
     }
 
     initializeEventListeners() {
-        // Form submission
+
         const form = document.getElementById('courseForm');
         form.addEventListener('submit', (e) => this.handleAddCourse(e));
 
-        // Current CGPA and credits input
         document.getElementById('currentCGPA').addEventListener('input', (e) => {
             this.currentCGPA = parseFloat(e.target.value) || 0;
             this.updateAllCalculations();
@@ -28,20 +27,17 @@ class AdvancedCGPACalculator {
             this.saveData();
         });
 
-        // Clear all button
+
         document.getElementById('clearAllBtn').addEventListener('click', () => {
             this.clearAllCourses();
         });
 
-        // Theme toggle
         document.getElementById('themeToggle').addEventListener('click', () => {
             this.toggleTheme();
         });
 
-        // Keyboard shortcuts
         document.addEventListener('keydown', (e) => this.handleKeyboardShortcuts(e));
 
-        // Input validation
         this.setupInputValidation();
     }
 
@@ -96,13 +92,12 @@ class AdvancedCGPACalculator {
     }
 
     handleKeyboardShortcuts(e) {
-        // Ctrl/Cmd + Enter to add course
+
         if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
             e.preventDefault();
             document.getElementById('courseForm').dispatchEvent(new Event('submit'));
         }
-        
-        // Escape to clear form
+   
         if (e.key === 'Escape') {
             this.clearForm();
         }
@@ -140,7 +135,6 @@ class AdvancedCGPACalculator {
         this.saveData();
         this.showNotification('Course added successfully!', 'success');
         
-        // Focus back to course name input
         document.getElementById('courseName').focus();
     }
 
@@ -238,12 +232,10 @@ class AdvancedCGPACalculator {
     }
 
     updateAllCalculations() {
-        // Calculate semester values
         const semesterCredits = this.courses.reduce((sum, course) => sum + course.creditHours, 0);
         const semesterGradePoints = this.courses.reduce((sum, course) => sum + (course.grade * course.creditHours), 0);
         const semesterGPA = semesterCredits > 0 ? semesterGradePoints / semesterCredits : 0;
 
-        // Calculate overall values
         const totalCredits = this.completedCredits + semesterCredits;
         let overallCGPA;
         
@@ -254,7 +246,6 @@ class AdvancedCGPACalculator {
             overallCGPA = semesterGPA;
         }
 
-        // Update UI
         this.updateResultsDisplay(semesterCredits, semesterGPA, totalCredits, overallCGPA);
         this.updateProgressBar(overallCGPA);
     }
@@ -267,8 +258,7 @@ class AdvancedCGPACalculator {
         
         const cgpaStatus = document.getElementById('cgpaStatus');
         cgpaStatus.textContent = this.getGradeStatus(overallCGPA);
-        
-        // Add animation to CGPA card
+
         const cgpaElement = document.getElementById('cgpa');
         cgpaElement.style.animation = 'pulse 0.5s ease-in-out';
         setTimeout(() => {
@@ -283,8 +273,7 @@ class AdvancedCGPACalculator {
         const percentage = (cgpa / 4.0) * 100;
         progressFill.style.width = `${percentage}%`;
         progressPercentage.textContent = `${percentage.toFixed(1)}%`;
-        
-        // Change color based on CGPA
+
         if (cgpa >= 3.5) {
             progressFill.style.background = 'linear-gradient(90deg, #10b981 0%, #059669 100%)';
         } else if (cgpa >= 3.0) {
@@ -304,13 +293,12 @@ class AdvancedCGPACalculator {
     }
 
     showNotification(message, type) {
-        // Remove any existing notifications
+
         const existingNotification = document.querySelector('.notification');
         if (existingNotification) {
             existingNotification.remove();
         }
 
-        // Create and show new notification
         const notification = document.createElement('div');
         notification.className = `notification notification-${type}`;
         
@@ -319,8 +307,7 @@ class AdvancedCGPACalculator {
             <i class="${icon}"></i>
             <span>${message}</span>
         `;
-        
-        // Style the notification
+
         notification.style.cssText = `
             position: fixed;
             top: 20px;
@@ -341,13 +328,11 @@ class AdvancedCGPACalculator {
         `;
 
         document.body.appendChild(notification);
-        
-        // Animate in
+
         setTimeout(() => {
             notification.style.transform = 'translateX(0)';
         }, 100);
 
-        // Remove after 4 seconds
         setTimeout(() => {
             notification.style.transform = 'translateX(100%)';
             setTimeout(() => {
@@ -375,7 +360,6 @@ class AdvancedCGPACalculator {
                 this.currentCGPA = data.currentCGPA || 0;
                 this.completedCredits = data.completedCredits || 0;
                 
-                // Update input fields
                 document.getElementById('currentCGPA').value = this.currentCGPA || '';
                 document.getElementById('completedCredits').value = this.completedCredits || '';
                 
@@ -418,10 +402,8 @@ class AdvancedCGPACalculator {
     }
 }
 
-// Initialize calculator
 const calculator = new AdvancedCGPACalculator();
 
-// Add welcome message on first load
 document.addEventListener('DOMContentLoaded', () => {
     const isFirstVisit = !localStorage.getItem('uiu-cgpa-calculator');
     if (isFirstVisit) {
@@ -430,9 +412,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
     
-    // Auto-focus on course name input
     document.getElementById('courseName').focus();
 });
 
-// Add export functionality (can be triggered via console or future button)
 window.exportCGPAData = () => calculator.exportData();
