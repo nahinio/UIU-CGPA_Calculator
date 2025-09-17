@@ -12,9 +12,9 @@
 
 <br>
 
-💻 A simple, beautiful and efficient web-based CGPA calculator tailored for **UIU (United International University)** students.
+An interactive and responsive web application designed for **United International University** students to calculate semester GPA and cumulative CGPA. Built with HTML, CSS, and JavaScript, it provides real-time results based on course grades and credit hours, offering a seamless and accurate academic performance tracking experience.
 
-[![UIU CGPA Calculator Icon](resources/uiuIcon.ico)](https://najibnahindev.github.io/UIU-CGPA_Calculator/) ➡️ **[Try UIU CGPA Calculator](https://najibnahindev.github.io/UIU-CGPA_Calculator/)**  
+[![UIU CGPA Calculator Icon](resources/uiuIcon.ico)](https://nahinio.github.io/UIU-CGPA_Calculator/) ➡️ **[Try UIU CGPA Calculator](https://nahinio.github.io/UIU-CGPA_Calculator/)**  
 
 ---
 
@@ -77,8 +77,8 @@ UIU-CGPA_Calculator/
 ├── script.js           # JS logic & calculation
 ├── resources/
 │   └── demo.png        # Screenshot preview
-|   └── uiuIcon.ico     # Favicon of the website
-|   └── UIU_Logo.png        # UIU Logo
+│   └── uiuIcon.ico     # Favicon of the website
+│   └── UIU_Logo.png    # UIU Logo
 └── README.md           # Project documentation
 
 ```
@@ -88,12 +88,12 @@ UIU-CGPA_Calculator/
 
 Through this project, I strengthened my skills in:
 
-- 🎯 DOM Manipulation  
-- 🎯 Responsive Design with CSS  
-- 🎯 JavaScript-based dynamic form handling  
-- 🎯 User-centric UX design  
-- 🎯 Deploying with GitHub Pages  
-- 🎯 Code modularization  
+🎯 DOM Manipulation  
+🎯 Responsive Design with CSS  
+🎯 JavaScript-based dynamic form handling  
+🎯 User-centric UX design  
+🎯 Deploying with GitHub Pages  
+🎯 Code modularization  
 
 ---
 
@@ -120,7 +120,7 @@ See the [`LICENSE`](./LICENSE) file for details.
 <div align="center">
 
 ⭐ **If you liked this project, don't forget to star the repo!**  
-🔗 [**Visit Live Project**](https://najibnahindev.github.io/UIU-CGPA_Calculator/)
+🔗 [**Try the Live Project**](https://nahinio.github.io/UIU-CGPA_Calculator/)
 
 </div>
 
